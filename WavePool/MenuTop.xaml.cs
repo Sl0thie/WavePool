@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-
-namespace WavePool
+﻿namespace WavePool
 {
+    using System;
+
+    using Windows.UI;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Controls.Primitives;
+    using Windows.UI.Xaml.Media;
+
     public sealed partial class MenuTop : Page
     {
         public static MenuTop Current;
@@ -35,7 +26,7 @@ namespace WavePool
             dud1.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             dud2.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             dud3.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
-            
+
             WaveHeightValue.Text = WaveHeight.Value.ToString("#0.0") + " m";
             PeroidValue.Text = Peroid.Value.ToString("#0") + " s";
             PhaseValue.Text = Phase.Value.ToString("#0.00");
@@ -73,10 +64,10 @@ namespace WavePool
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            SineWave.Current.AddWave(Op.nextHeight, Op.nextPeriod, Op.nextDepth, false, Op.nextReflection,0);
+            SineWave.Current.AddWave(Op.nextHeight, Op.nextPeriod, Op.nextDepth, false, Op.nextReflection, 0);
         }
 
-        private void dud_Click(object sender, RoutedEventArgs e)
+        private void Dud_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave.Current.multiWave)
             {
@@ -88,7 +79,7 @@ namespace WavePool
                 SineWave.Current.multiWave = true;
                 //SineWave.Current.multiTime = Op.TotalMilli + (int)(Op.nextPeriod * 1000);
 
-                SineWave.Current.multiTime = Op.TotalMilli ;
+                SineWave.Current.multiTime = Op.TotalMilli;
 
                 SineWave.Current.multiH = Op.nextHeight;
                 SineWave.Current.multiT = Op.nextPeriod;
@@ -96,12 +87,11 @@ namespace WavePool
                 SineWave.Current.multiReflection = Op.nextReflection;
                 SineWave.Current.multiDepth = Op.nextDepth;
 
-
-                dud1.Background = new SolidColorBrush(Color.FromArgb(255, 72,72,72));
+                dud1.Background = new SolidColorBrush(Color.FromArgb(255, 72, 72, 72));
             }
         }
 
-        private void dud2_Click(object sender, RoutedEventArgs e)
+        private void Dud2_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave.Current.multiWave2)
             {
@@ -122,7 +112,7 @@ namespace WavePool
             }
         }
 
-        private void dud3_Click(object sender, RoutedEventArgs e)
+        private void Dud3_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave.Current.multiWave3)
             {
@@ -132,7 +122,7 @@ namespace WavePool
             else
             {
                 SineWave.Current.multiWave3 = true;
-                SineWave.Current.multiTime3 = Op.TotalMilli ;
+                SineWave.Current.multiTime3 = Op.TotalMilli;
                 SineWave.Current.multiH3 = Op.nextHeight;
                 SineWave.Current.multiT3 = Op.nextPeriod;
                 SineWave.Current.multiPhase3 = Op.nextPhase;
@@ -148,7 +138,7 @@ namespace WavePool
             if (Op.showForward)
             {
                 Op.showForward = false;
-                ShowTopForward.Background = new SolidColorBrush(Color.FromArgb(255, 32,32,32));
+                ShowTopForward.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             }
             else
             {
@@ -176,7 +166,7 @@ namespace WavePool
             if (Op.showText)
             {
                 Op.showText = false;
-                ShowTopText.Background = new SolidColorBrush(Color.FromArgb(255, 32,32,32));
+                ShowTopText.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             }
             else
             {
@@ -190,6 +180,5 @@ namespace WavePool
             var uriHelpGeneral = new Uri(@"http://www.dallasadams.net/dallasadams/Software/WavePool/Help/Default.aspx");
             var success = await Windows.System.Launcher.LaunchUriAsync(uriHelpGeneral, new Windows.System.LauncherOptions() { DisplayApplicationPicker = false });
         }
-
     }
 }

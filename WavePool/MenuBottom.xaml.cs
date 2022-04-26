@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-
-
-namespace WavePool
+﻿namespace WavePool
 {
+    using Windows.UI;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Controls.Primitives;
+    using Windows.UI.Xaml.Media;
 
     public sealed partial class MenuBottom : Page
     {
@@ -36,7 +23,7 @@ namespace WavePool
 
             dud1.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             dud2.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
-            dud3.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));         
+            dud3.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -44,12 +31,12 @@ namespace WavePool
             SineWave2.Current.AddWave(Op.nextHeight, Op.nextPeriod, Op.nextDepth, false, Op.nextReflection, 0);
         }
 
-        private void dud1_Click(object sender, RoutedEventArgs e)
+        private void Dud1_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave2.Current.multiWave)
             {
                 SineWave2.Current.multiWave = false;
-                dud1.Background = new SolidColorBrush(Color.FromArgb(255, 32,32,32));
+                dud1.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             }
             else
             {
@@ -65,7 +52,7 @@ namespace WavePool
             }
         }
 
-        private void dud2_Click(object sender, RoutedEventArgs e)
+        private void Dud2_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave2.Current.multiWave2)
             {
@@ -86,7 +73,7 @@ namespace WavePool
             }
         }
 
-        private void dud3_Click(object sender, RoutedEventArgs e)
+        private void Dud3_Click(object sender, RoutedEventArgs e)
         {
             if (SineWave2.Current.multiWave3)
             {
@@ -107,7 +94,7 @@ namespace WavePool
             }
         }
 
-        private void timeSpeed_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        private void TimeSpeed_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
 
             if (On)
@@ -219,10 +206,10 @@ namespace WavePool
                         timeSpeedValue.Text = " x 50";
                         break;
                 }
-            }        
+            }
         }
 
-        private void depth_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        private void Depth_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             if (On)
             {

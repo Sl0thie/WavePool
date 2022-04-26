@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Concurrent;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using System.Numerics;
-using Windows.UI;
-using System.Diagnostics;
-using Microsoft.Graphics.Canvas.Text;
-
-namespace WavePool
+﻿namespace WavePool
 {
+    using System;
+    using System.Collections.Concurrent;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Input;
+    using Windows.UI.Xaml.Media;
+    using System.Numerics;
+    using Windows.UI;
+    using System.Diagnostics;
+    using Microsoft.Graphics.Canvas.Text;
 
     public sealed partial class SineWave2 : Page
     {
@@ -109,10 +108,10 @@ namespace WavePool
             ScaleLineXHeight = (float)(this.ActualHeight - 1);
             Debug.WriteLine("Page_Loaded " + xSize);
 
-            Text1X = ((xSize / 4) * 0) + xOffset;
-            Text2X = ((xSize / 4) * 1) + xOffset;
-            Text3X = ((xSize / 4) * 2) + xOffset;
-            Text4X = ((xSize / 4) * 3) + xOffset;
+            Text1X = (xSize / 4 * 0) + xOffset;
+            Text2X = (xSize / 4 * 1) + xOffset;
+            Text3X = (xSize / 4 * 2) + xOffset;
+            Text4X = (xSize / 4 * 3) + xOffset;
         }
 
         public void AddWave(double H, double T, double depth, bool Reverse, double Reflection, int Type)
@@ -137,7 +136,7 @@ namespace WavePool
             FetchValuesForward = new float[xSize];
             FetchValuesReversed = new float[xSize];
 
-            diffFrame = (DateTime.Now.Subtract(lastFrame).Milliseconds);
+            diffFrame = DateTime.Now.Subtract(lastFrame).Milliseconds;
             lastFrame = DateTime.Now;
             Op.TotalMilli += (int)(diffFrame * Op.timeSpeed);
 
@@ -182,7 +181,6 @@ namespace WavePool
                 Text3Str = "";
             }
 
-
             if (multiWave3)
             {
                 //Text4Str = "H:" + multiH3 + "  T:" + multiT3 + "  h:" + multiDepth3;
@@ -222,7 +220,7 @@ namespace WavePool
                             {
                                 Wave newWave = new Wave(nextWave.Value.H * nextWave.Value.Reflection, nextWave.Value.T, nextWave.Value.d, true, nextWave.Value.Reflection, nextWave.Value.Type, Op.TotalMilli, nextWave.Value.Selected);
 
-                                if ((nextWave.Value.Selected) && (nextWave.Value == SelectedWave))
+                                if (nextWave.Value.Selected && (nextWave.Value == SelectedWave))
                                 {
                                     newWave.Selected = true;
                                     SelectedWaveReverse = newWave;
@@ -243,7 +241,7 @@ namespace WavePool
                         }
 
                         //Check if wave needs to be removed.
-                        if (nextWave.Value.offset - (nextWave.Value.L) > xSize)
+                        if (nextWave.Value.offset - nextWave.Value.L > xSize)
                         {
                             if (nextWave.Value.Selected)
                             {
@@ -276,7 +274,7 @@ namespace WavePool
                     nextWave.Value.offset = xSize + (nextWave.Value.milliSpeed * (Op.TotalMilli - nextWave.Value.Milli));
 
                     //Check if wave needs to be removed for reverse.
-                    if (nextWave.Value.offset + (nextWave.Value.L) < -10)
+                    if (nextWave.Value.offset + nextWave.Value.L < -10)
                     {
                         //Start delete.
                         Wave sink;
@@ -333,9 +331,6 @@ namespace WavePool
                 }
                 catch { }
 
-
-
-                
             }
 
             #endregion
@@ -351,7 +346,7 @@ namespace WavePool
                 {
                     for (int i = 0; i < xSize - 2; i++)
                     {
-                        args.DrawingSession.DrawLine(xOffset + (i), yOffset - (FetchValuesReversed[i]), xOffset + (i) + 1, yOffset - (FetchValuesReversed[i + 1]), colorMainReverse, 1.6f);
+                        args.DrawingSession.DrawLine(xOffset + i, yOffset - FetchValuesReversed[i], xOffset + i + 1, yOffset - FetchValuesReversed[i + 1], colorMainReverse, 1.6f);
                     }
                 }
                 catch (Exception ex) { Debug.WriteLine("ERR2 " + ex.Message); }
@@ -364,7 +359,7 @@ namespace WavePool
                 {
                     for (int i = 0; i < xSize - 2; i++)
                     {
-                        args.DrawingSession.DrawLine(xOffset + (i), yOffset - (FetchValuesForward[i]), xOffset + (i) + 1, yOffset - (FetchValuesForward[i + 1]), colorMainForward, 1.6f);
+                        args.DrawingSession.DrawLine(xOffset + i, yOffset - FetchValuesForward[i], xOffset + i + 1, yOffset - FetchValuesForward[i + 1], colorMainForward, 1.6f);
                     }
                 }
                 catch (Exception ex) { Debug.WriteLine("ERR2 " + ex.Message); }
@@ -375,7 +370,7 @@ namespace WavePool
             {
                 for (int i = 0; i < xSize - 2; i++)
                 {
-                    args.DrawingSession.DrawLine(xOffset + (i), yOffset - (FetchValues[i]), xOffset + (i) + 1, yOffset - (FetchValues[i + 1]), colorMainLine, 2.1f);
+                    args.DrawingSession.DrawLine(xOffset + i, yOffset - FetchValues[i], xOffset + i + 1, yOffset - FetchValues[i + 1], colorMainLine, 2.1f);
                 }
             }
             catch (Exception ex) { Debug.WriteLine("ERR2 " + ex.Message); }
@@ -384,7 +379,7 @@ namespace WavePool
             {
                 for (int i = 0; i < xSize - 2; i = i + 20)
                 {
-                    args.DrawingSession.DrawLine(xOffset + (i), ScaleLineXHeight, xOffset + (i), ScaleLineXHeight - 4, colorSeaFloor, 1.1f);
+                    args.DrawingSession.DrawLine(xOffset + i, ScaleLineXHeight, xOffset + i, ScaleLineXHeight - 4, colorSeaFloor, 1.1f);
                 }
                 args.DrawingSession.DrawLine(xOffset, ScaleLineXHeight, xOffset + xSize, ScaleLineXHeight, colorSeaFloor, 1.1f);
             }
@@ -415,9 +410,8 @@ namespace WavePool
 
                     for (int i = selStart; i < selFinish; i++)
                     {
-                        args.DrawingSession.DrawLine(xOffset + (i), yOffset - (FetchValues[i]), xOffset + (i) + 1, yOffset - (FetchValues[i + 1]), colorSelectedLine, 1.6f);
+                        args.DrawingSession.DrawLine(xOffset + i, yOffset - FetchValues[i], xOffset + i + 1, yOffset - FetchValues[i + 1], colorSelectedLine, 1.6f);
                     }
-
 
                     if (Op.showText1)
                     {
@@ -454,7 +448,7 @@ namespace WavePool
 
                     for (int i = selStart; i < selFinish; i++)
                     {
-                        args.DrawingSession.DrawLine(xOffset + (i), yOffset - (FetchValues[i]), xOffset + (i) + 1, yOffset - (FetchValues[i + 1]), colorSelectedLine, 1.6f);
+                        args.DrawingSession.DrawLine(xOffset + i, yOffset - FetchValues[i], xOffset + i + 1, yOffset - FetchValues[i + 1], colorSelectedLine, 1.6f);
                     }
 
                     if (Op.showText1)

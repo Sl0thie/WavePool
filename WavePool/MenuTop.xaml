@@ -43,14 +43,14 @@
         <Button x:Name="Create" Grid.Column="1"  Width="36" Height="36" Click="Create_Click" HorizontalAlignment="Center"  Background="#FF202020">
             <FontIcon Glyph="" FontFamily="Segoe UI Symbol" FontSize="20" Margin="-18"/>
         </Button>
-        <Button x:Name="dud1" Grid.Column="2" Width="36" Height="36" Click="dud_Click" HorizontalAlignment="Center" Background="#FF202020">
+        <Button x:Name="dud1" Grid.Column="2" Width="36" Height="36" Click="Dud_Click" HorizontalAlignment="Center" Background="#FF202020">
             <FontIcon Glyph="" FontFamily="Segoe UI Symbol" FontSize="20" Margin="-18"/>
         </Button>
-        <Button x:Name="dud2" Grid.Column="3" Width="36" Height="36" HorizontalAlignment="Center" Click="dud2_Click" Background="#FF202020">
+        <Button x:Name="dud2" Grid.Column="3" Width="36" Height="36" HorizontalAlignment="Center" Click="Dud2_Click" Background="#FF202020">
             <FontIcon Glyph="" FontFamily="Segoe UI Symbol" FontSize="20" Margin="-18"/>
         </Button>
 
-        <Button x:Name="dud3" Grid.Column="4" Width="36" Height="36" HorizontalAlignment="Center" Click="dud3_Click" Background="#FF202020">
+        <Button x:Name="dud3" Grid.Column="4" Width="36" Height="36" HorizontalAlignment="Center" Click="Dud3_Click" Background="#FF202020">
             <FontIcon Glyph="" FontFamily="Segoe UI Symbol" FontSize="20" Margin="-18"/>
         </Button>
 

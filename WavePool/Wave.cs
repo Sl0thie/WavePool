@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WavePool
+﻿namespace WavePool
 {
+    using System;
+    using System.Diagnostics;
+
     public class Wave
     {
         public double H;//Wave Height.
@@ -65,7 +61,7 @@ namespace WavePool
 
             this.Selected = Selected;
 
-            Debug.WriteLine("New Wave: T:" + T + " d:" + d + " L:" + L  + " c:" + c + " k:" + k + " f:" + f + " reversed:" + Reversed + " reflection:" + Reflection + " Data:" + data.Length + " FrameSpeed:" + frameSpeed + " FrameSpace:" + frameSpace + " FramesTotal:" + framesTotal);
+            Debug.WriteLine("New Wave: T:" + T + " d:" + d + " L:" + L + " c:" + c + " k:" + k + " f:" + f + " reversed:" + Reversed + " reflection:" + Reflection + " Data:" + data.Length + " FrameSpeed:" + frameSpeed + " FrameSpace:" + frameSpace + " FramesTotal:" + framesTotal);
             Debug.WriteLine("Milli:" + Milli + " MilliSpeed:" + milliSpeed + " offset:" + offset);
         }
 
